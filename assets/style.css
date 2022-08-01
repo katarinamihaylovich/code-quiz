@@ -1,0 +1,71 @@
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 40px;
+    color:darkmagenta;
+}
+
+p {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+}
+
+aside {
+    text-align: end;
+}
+
+#timer {
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-right: 25px;
+    display: block;
+}
+
+#highScore {
+    background-color: aliceblue;
+    color:darkmagenta;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#container {
+    width: 40%;
+    margin: auto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgb(247, 212, 244);
+    color:darkmagenta;
+    border: 4px solid aliceblue;
+    border-radius: 8px;
+    padding: 0 15px 20px 15px;
+    margin: auto;
+}
+
+#quiz {
+    text-indent: 10px;
+    display: none;
+}
+
+#startButton {
+    background-color:white;
+    color:darkmagenta;
+    border: 5px;
+    border-style: solid;
+    border-radius: 8px;
+    width: 30%;
+    height: auto;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding: 10px;
+    margin: auto;
+    font-size: 30px;
+    text-align: center;
+    display: block;
+}
+
+#startButton:hover {
+    background-color:white;
+    color:orchid;
+}
