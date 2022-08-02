@@ -130,11 +130,14 @@ function highScore (){
 function createScore(){
     var myName = localStorage.getItem("Initials");
     var myScore = localStorage.getItem("score");
-    
+    scoreList.appendChild(document.createElement("label")).textContent = "Name: " + myName + " |";
+    scoreList.appendChild(document.createElement("label")).textContent = " Score: " + myScore;
+    scoreList.setAttribute("style","color:darkmagenta; font-size: 15px; font-family:Verdana, Geneva, Tahoma, sans-serif; display:block;");
 }
 
-var scoresBtn = document.getElementById("highScoreBtn")
+var scoresBtn = document.getElementById("highScoreBtn");
+var scoreList = document.getElementById("list");
 
 scoresBtn.addEventListener("click", function(){
-
+    createScore();
 })
