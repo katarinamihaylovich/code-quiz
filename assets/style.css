@@ -26,10 +26,26 @@ aside {
     display: block;
 }
 
+#score {
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-right: 25px;
+    display: block;
+    color: darkmagenta;
+}
+
 #highScore {
-    background-color: aliceblue;
+    background-color: rgb(247, 212, 244);
     color:darkmagenta;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    border-color: darkmagenta;
+    border-radius: 4px;
+}
+
+#highScore:hover {
+    background-color:white;
+    color:orchid;
 }
 
 #container {
@@ -69,3 +85,4 @@ aside {
     background-color:white;
     color:orchid;
 }
+
