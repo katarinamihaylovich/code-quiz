@@ -1,28 +1,5 @@
-// var seconds = 75;
 
-// var countDown;
-// function timeFunction(){
-//     if (seconds < 75) {
-//         document.getElement("#timer").innerHTML = seconds;
-//     }
-//     if (seconds > 0){
-//         seconds--;
-//     } else {
-//         clearInterval(countDown);
-//         alert("Out of time! Failed.");
-//     }
-//     document.getElement("#digitsLeft").onkeypress = function(){
-//     if(!timer){
-//         timer = window.setInterval(function(){
-//             timeFunction();
-//         }, 1000);
-//     }
-// }}
-
-// document.getElementById("timer").innerHTML= seconds;
-
-var title = document.getElementById("title");
-
+// Array of questions, options, and answers
 var questions = [{
     question: "Commonly used data types do NOT include:",
     choices: ["numbers", "strings", "booleans", "alerts"],
@@ -45,12 +22,13 @@ var questions = [{
     answer: "console.log",
 },]
 
-
+//Variables for necessary elements in the HTML
 var containerEl = document.getElementById("container");
 var ulEl = document.querySelector(".answerButtons");
 var currentQuestionAll = 0;
 var questionName = document.createElement("h2");
 
+// Function that displays quiz 
 function createQuestion(){
     var currentQuestion = questions[currentQuestionAll];
     
@@ -74,17 +52,21 @@ function createQuestion(){
 var timer = 75;
 var timerEl = document.getElementById("timer");
 var startBtn = document.getElementById("startButton");
+var title = document.getElementById("title");
 
+// Event listener begins the game upon start button click
 startBtn.addEventListener("click", function(){
     title.style.display = "none";
     startBtn.style.display = "none";
     createQuestion();
     
+    // Timer function and ensuring the game over display occurs if the time runs out regardless of user input
     myInterval = setInterval(function(){
         timerEl.textContent = (timer + " seconds remaining");
         timer--;
         if (timer < 0){
             clearInterval(myInterval);
+            gameOver();
         }
     }, 1000)
 });
@@ -92,22 +74,7 @@ startBtn.addEventListener("click", function(){
 var score = 0;
 var scoreEl = document.getElementById("score");
 
-// containerEl.addEventListener("click", function(event){
-//     if(event.target.matches("button")){
-//         // var currentQuestion = questions[currentQuestionAll];
-//         // var userChoice = event.target.textContent;
-
-        
-//         ulEl.textContent = "";
-        
-//         if (currentQuestionAll === questions.length){
-//             gameOver();
-//         } else {
-//             createQuestion();
-//         }
-//     }
-// });
-
+// Checks to see if user input was correct
 function checkAns() {
     var currentQuestion = questions[currentQuestionAll];
     var userChoice = event.target.textContent;
@@ -115,6 +82,7 @@ function checkAns() {
         score += 10;
         scoreEl.textContent = ("Correct! +" + score);
     } else {
+        timer -= 5;
         score -= 5;
         scoreEl.textContent = ("Incorrect! " + score);
     }
@@ -128,7 +96,7 @@ function checkAns() {
     console.log("check");
 }
 
-
+// Ends the game when all questions are answered
 function gameOver() {
     containerEl.textContent = "";
     var gameText = containerEl.appendChild(document.createElement("h2"));
@@ -137,7 +105,36 @@ function gameOver() {
 
     if (score === (questions.length * 10)){
         finalScore.textContent = ("Maximum score achieved! Total: " + score);
-    } else{
-        finalScore.textContent = ("Your final score is" + score);
-    }
+    } else {
+        finalScore.textContent = ("Your final score is " + score + ".");
+    };
+    highScore();
 }
+
+// Totals the user's high score and logs it into local storage
+function highScore (){
+    var formEl = containerEl.appendChild(document.createElement("form"));
+    formEl.appendChild(document.createElement("label")).textContent = "Enter Initials: ";
+    formEl.appendChild(document.createElement("input")).setAttribute("type", "text");
+
+    var submitEl = formEl.appendChild(document.createElement("button"));
+    submitEl.textContent = "Submit";
+    submitEl.setAttribute("style", "color:darkmagenta; margin-left: 10px; font-weight:bold");
+    submitEl.addEventListener("click", function(){
+        var input = document.querySelector("input").value;
+        localStorage.setItem("Initials", input);
+        localStorage.setItem("score", score);
+    })
+}
+
+function createScore(){
+    var myName = localStorage.getItem("Initials");
+    var myScore = localStorage.getItem("score");
+    
+}
+
+var scoresBtn = document.getElementById("highScoreBtn")
+
+scoresBtn.addEventListener("click", function(){
+
+})
